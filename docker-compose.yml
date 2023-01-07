@@ -4,22 +4,20 @@ volumes:
   synapse-data:
 
 services:
-  synapse:
-    build:
-      context: docker/synapse
-      target: development
-    container_name: synapse
-    network_mode: service:wireguard
-    volumes:
-      - synapse-data:/data
-    ports:
-      - 8008:8008
+  #synapse:
+  #  build: docker/synapse
+  #  container_name: synapse
+  #  #network_mode: service:wireguard
+  #  volumes:
+  #    - synapse-data:/data
+  #  ports:
+  #    - 8008:8008
 
   client:
     build:
       context: .
       dockerfile: docker/client/Dockerfile
-      target: development
+      target: develop 
     container_name: client
     ports:
       - 3000:3000

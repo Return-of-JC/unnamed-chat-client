@@ -7,7 +7,7 @@
     "keywords": [],
     "author": "",
     "scripts": {
-        "dev": "vite",
+        "develop": "vite --host",
         "build": "vite build",
         "serve": "vite preview"
     },
