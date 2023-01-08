@@ -21,6 +21,7 @@ services:
     container_name: client
     ports:
       - 3000:3000
+      - 3010:3010
     volumes:
-      - .:/app/client
+      - ./src:/app/src
   

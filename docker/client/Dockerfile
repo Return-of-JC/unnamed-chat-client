@@ -3,7 +3,7 @@ FROM alpine:latest as base
 ENV USER=chatter
 ENV UID=1000
 ENV GID=1000
-ENV DIR=/home/${USER}/app
+ENV DIR=/app
 
 RUN addgroup -g ${GID} ${USER}
 RUN adduser -D -H -G ${USER} -u ${UID} ${USER}
