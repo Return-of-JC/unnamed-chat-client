@@ -1,7 +1,10 @@
 import { render } from 'solid-js/web';
+import { LoginComponent } from './components/moecules/login';
 
 function HelloWorld() {
-  return <div>OMG YES</div>;
+  let button = LoginComponent();
+  return button;
 }
+
 
 render(() => <HelloWorld />, document.getElementById('root'));
