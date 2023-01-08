@@ -1,5 +1,5 @@
 import { render } from 'solid-js/web';
-import { LoginComponent } from './components/moecules/login';
+import { LoginComponent } from '@molecules/login';
 
 import './index.scss'
 

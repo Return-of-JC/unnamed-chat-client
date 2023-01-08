@@ -1,10 +1,11 @@
-all:
+all: build server
 
 build:
-	docker-compose build --no-cache
+	docker-compose build
+
 
 server:
 	docker-compose up
 
-synapse-config:
-	docker run -it --rm
+fresh:
+	docker-compose build --no-cache
