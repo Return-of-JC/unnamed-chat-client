@@ -1,11 +1,16 @@
-all: build server
+all: build serve
+
+update:
+	docker-compose build --no-cache --pull
+	docker-compose run --rm client pnpm install
 
 build:
 	docker-compose build
+	docker-compose run --rm client pnpm install
 
-
-server:
+serve:
 	docker-compose up
 
-fresh:
-	docker-compose build --no-cache
+
+clean:
+	docker-compose rm -svf

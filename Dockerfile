@@ -1,9 +1,9 @@
 FROM alpine:latest as base
 
-ENV USER=chatter
+ENV USER=client
 ENV UID=1000
 ENV GID=1000
-ENV DIR=/app
+ENV DIR=/chat-client
 
 RUN addgroup -g ${GID} ${USER}
 RUN adduser -D -H -G ${USER} -u ${UID} ${USER}
@@ -15,12 +15,17 @@ RUN chown -R ${USER}:${USER} ${DIR}
 RUN apk add npm make
 RUN npm i -g pnpm
 
-FROM base as develop
-
+FROM base as dev-client
 RUN apk add neovim
 USER ${USER}
-RUN pnpm install
-CMD pnpm develop
+
+CMD pnpm dev-client
+
+FROM base as dev-server
+RUN apk add neovim
+USER ${USER}
+
+CMD pnpm dev-server
 
 FROM base as builder
 

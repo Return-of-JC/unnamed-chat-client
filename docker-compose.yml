@@ -1,27 +1,25 @@
 version: '3.3'
 
-volumes:
-  synapse-data:
-
 services:
-  #synapse:
-  #  build: docker/synapse
-  #  container_name: synapse
-  #  #network_mode: service:wireguard
-  #  volumes:
-  #    - synapse-data:/data
-  #  ports:
-  #    - 8008:8008
+  server:
+    build:
+      context: .
+      target: dev-server
+    container_name: server 
+    ports:
+      - 3030:3030
+    volumes:
+      - .:/chat-client
 
   client:
     build:
       context: .
-      dockerfile: docker/client/Dockerfile
-      target: develop 
+      target: dev-client
+    depends_on: [ server ]
     container_name: client
     ports:
       - 3000:3000
       - 3010:3010
     volumes:
-      - ./src:/app/src
+      - .:/chat-client
   

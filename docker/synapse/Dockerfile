@@ -1,1 +1,0 @@
-FROM matrixdotorg/synapse:latest

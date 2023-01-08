@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "module": "ESNext",
+        "module": "CommonJS",
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
@@ -12,12 +12,12 @@
         "isolatedModules": true,
         "baseUrl": "./src/",
         "paths": {
-            "@": ["*"],
-            "@atoms/*": ["components/atoms/*"],
-            "@molecules/*": ["components/molecules/*"],
-            "@organisms/*": ["components/organisms/*"],
-            "@templates/*": ["templates/*"],
-            "@pages/*": ["pages/*"],
+            "@": ["client/*"],
+            "@atoms/*": ["client/components/atoms/*"],
+            "@molecules/*": ["client/components/molecules/*"],
+            "@organisms/*": ["client/components/organisms/*"],
+            "@templates/*": ["client/templates/*"],
+            "@pages/*": ["client/pages/*"],
         },
     }
 }
