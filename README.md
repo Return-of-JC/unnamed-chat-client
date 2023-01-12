@@ -2,9 +2,12 @@
 
 a simple chat app build with SolidJS and NodeJS
 
-## Getting started with Development:
+# Index
+- [Before Starting](#before-starting)
+- [Installation and Setup](#installation-and-setup)
+    - [Using the Just Runner](#using-the-just-runner)
 
-### **BEFORE STARTING ANY DEVELOPMENT**
+## Before Starting
 
 please be familiar with these code patterns:
 - [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/)
@@ -21,7 +24,10 @@ you'll also need to setup [Eslint](https://eslint.org/docs/latest/user-guide/int
 and [Prettier](https://prettier.io/docs/en/editors.html) in your editor of choice for
 consistant code quality.
 
-### Installation and Setup
+## Installation and Setup
+
+You'll need to create a docker account and use [docker login](https://docs.docker.com/engine/reference/commandline/login/)
+to pull in images to your local machine.
 
 dependencies that **MUST** be installed to run the project:
 - [docker](https://www.docker.com/)
