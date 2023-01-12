@@ -1,24 +1,24 @@
-import path from 'path';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
 
-import solidPlugin from 'vite-plugin-solid';
+import solidPlugin from 'vite-plugin-solid'
+import eslint from 'vite-plugin-eslint'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
     root: './src/client',
-    plugins: [solidPlugin(), tsconfigPaths()],
+    plugins: [solidPlugin(), eslint(), tsconfigPaths()],
     server: {
-    port: 3000,
-    host: true,
-    strictPort: true,
-    hmr: {
-        port: 3010,
+        port: 3000,
+        host: true,
+        strictPort: true,
+        hmr: {
+            port: 3010,
+        },
+        watch: {
+            usePolling: true,
+        },
     },
-    watch: {
-        usePolling: true,
-    },
-},
     build: {
         target: 'esnext',
     },
-});
+})

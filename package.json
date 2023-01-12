@@ -9,16 +9,21 @@
     "scripts": {
         "dev-client": "vite",
         "dev-server": "nodemon src/server/index.ts",
-        "build": "vite build",
-        "serve": "vite preview"
     },
     "devDependencies": {
         "@types/express": "^4.17.15",
         "@types/node": "^18.11.18",
+        "@typescript-eslint/parser": "^5.48.1",
+        "eslint": "^8.31.0",
+        "eslint-config-prettier": "^8.6.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-solid": "^0.9.2",
         "nodemon": "^2.0.20",
+        "prettier": "^2.8.2",
         "ts-node": "^10.9.1",
         "typescript": "^4.9.4",
         "vite": "^4.0.3",
+        "vite-plugin-eslint": "^1.8.1",
         "vite-plugin-solid": "^2.5.0",
         "vite-tsconfig-paths": "^4.0.3"
     },
