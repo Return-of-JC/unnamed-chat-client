@@ -2,7 +2,7 @@
 
 a simple chat app build with SolidJS and NodeJS
 
-# Index
+### Index
 - [Before Starting](#before-starting)
 - [Installation and Setup](#installation-and-setup)
     - [Using the Just Runner](#using-the-just-runner)
