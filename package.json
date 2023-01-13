@@ -11,6 +11,7 @@
         "dev-server": "nodemon src/server/index.ts"
     },
     "prettier": {
+        "endOfLine": "auto",
         "ignorePatterns": ["node_modules/*"],
         "singleQuote": true,
         "semi": false,
