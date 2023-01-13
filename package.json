@@ -11,11 +11,13 @@
         "dev-server": "nodemon src/server/index.ts"
     },
     "prettier": {
+        "ignorePatterns": ["node_modules/*"],
         "singleQuote": true,
         "semi": false,
         "tabWidth": 4
     },
     "eslintConfig": {
+        "ignorePatterns": ["node_modules/*"],
         "env": {
             "browser": true,
             "es2021": true
