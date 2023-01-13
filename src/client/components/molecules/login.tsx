@@ -1,50 +1,59 @@
-import { Button } from '@atoms/button/component'
-import { Input } from '@atoms/input'
-import { createSignal } from 'solid-js'
+import { Component, createSignal } from 'solid-js'
 
-const LoginComponent = () => {
+import Button from '@atoms/button/component'
+import Input, { InputHandler, KeyPressHandler } from '@atoms/input'
+
+const Login: Component = () => {
     const [loginForm, setLoginForm] = createSignal({
         username: '',
         password: '',
     })
 
-    function OnInputHandler(event) {
-        if (event.target.placeholder == 'Username')
-            setLoginForm(
-                Object.assign(loginForm(), { username: event.target.value })
-            )
-        else
-            setLoginForm(
-                Object.assign(loginForm(), { password: event.target.value })
-            )
+    const inputHandler: InputHandler = (event) => {
+        const target = event.currentTarget
+
+        switch (target.placeholder) {
+            case 'Username':
+                setLoginForm((prev) => ({ ...prev, username: target.value }))
+                break
+            case 'Password':
+                setLoginForm((prev) => ({ ...prev, password: target.value }))
+                break
+        }
     }
 
-    function CheckIfEnter(event) {
-        if (event.code == 'Enter') SubmitLogin()
+    const keyPressHandler: KeyPressHandler = (event) => {
+        if (event.code == 'Enter') submitLogin()
     }
 
-    function SubmitLogin() {
-        if (loginForm().username === '' || loginForm().password === '') return
-        console.log('submitted m8')
+    const submitLogin = () => {
+        const inputs = Object.entries(loginForm())
+
+        for (let inputIndex = 0; inputIndex < inputs.length; inputIndex++) {
+            const value = inputs[inputIndex][1]
+            if ([undefined, null].includes(value) || value.length < 1) return
+        }
+
+        console.log('submitted!')
     }
 
     return (
         <div>
             <Input
-                onKeyPress={CheckIfEnter}
+                onKeyPress={keyPressHandler}
                 value={loginForm().username}
-                onInput={OnInputHandler}
+                onInput={inputHandler}
                 label={'Username'}
             />
             <Input
-                onKeyPress={CheckIfEnter}
+                onKeyPress={keyPressHandler}
                 value={loginForm().password}
-                onInput={OnInputHandler}
+                onInput={inputHandler}
                 label={'Password'}
             />
-            <Button onClick={SubmitLogin} label={'Log in'} />
+            <Button onClick={submitLogin} label={'Log in'} />
         </div>
     )
 }
 
-export { LoginComponent }
+export default Login

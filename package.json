@@ -22,25 +22,30 @@
         },
         "parser": "@typescript-eslint/parser",
         "plugins": [
-            "solid", 
+            "solid",
             "prettier"
         ],
         "extends": [
-            "eslint:recommended", 
-            "plugin:solid/typescript", 
+            "eslint:recommended",
+            "plugin:@typescript-eslint/recommended-requiring-type-checking",
+            "plugin:solid/typescript",
             "prettier"
         ],
         "parserOptions": {
             "ecmaVersion": "latest",
             "sourceType": "module",
-            "project": ["./tsconfig.json"] 
+            "project": [
+                "./tsconfig.json"
+            ]
         },
         "rules": {
             "no-unused-vars": "warn",
-            "prettier/prettier": ["error"]
+            "prettier/prettier": [
+                "error"
+            ]
         }
     },
-    "nodemonConfig":{
+    "nodemonConfig": {
         "execMap": {
             "ts": "ts-node"
         }
@@ -48,6 +53,7 @@
     "devDependencies": {
         "@types/express": "^4.17.15",
         "@types/node": "^18.11.18",
+        "@typescript-eslint/eslint-plugin": "^5.48.1",
         "@typescript-eslint/parser": "^5.48.1",
         "eslint": "^8.31.0",
         "eslint-config-prettier": "^8.6.0",

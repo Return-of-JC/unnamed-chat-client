@@ -1,6 +1,6 @@
 import { render } from 'solid-js/web'
 import { Router, Routes, Route } from '@solidjs/router'
-import { LoginComponent } from '@molecules/login'
+import Login from '@molecules/login'
 
 import './index.scss'
 
@@ -8,7 +8,7 @@ function Root() {
     return (
         <Router>
             <Routes>
-                <Route path="/" component={LoginComponent} />
+                <Route path="/" component={Login} />
             </Routes>
         </Router>
     )
