@@ -14,6 +14,7 @@ RUN chown -R ${USER}:${USER} ${DIR}
 
 RUN apk add npm make
 RUN npm i -g pnpm
+RUN pnpm install
 
 FROM base as dev-client
 RUN apk add neovim

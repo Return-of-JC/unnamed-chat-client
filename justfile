@@ -1,11 +1,13 @@
 set positional-arguments
 
-all: build serve
-
 # builds docker-compose for development
-build:
+linux:
 	docker-compose build
 	docker-compose run --rm client pnpm install
+
+windows:
+    docker-compose build
+    pnpm install
 
 # serves docker-compose for development
 serve:
