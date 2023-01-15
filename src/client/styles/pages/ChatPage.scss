@@ -1,0 +1,10 @@
+.chat-page {
+    display: grid;
+    grid-template-columns: 15rem 1fr;
+
+    &__left {
+        display: flex;
+        flex-direction: column;
+        background: teal;
+    }
+}

@@ -1,0 +1,19 @@
+.chat-bar {
+    display: flex;
+    background: gray;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 0.25rem;
+
+    &__input {
+        border: none;
+        font-size: 1.1rem;
+        width: 100%;
+        background: transparent;
+        color: white;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

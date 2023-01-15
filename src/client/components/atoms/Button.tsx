@@ -1,12 +1,11 @@
 import { Component, JSX } from 'solid-js'
 
-import './styling.css'
-
 export type ClickHandler = JSX.EventHandler<HTMLButtonElement, MouseEvent>
 
 export interface ButtonProps {
-    label: string
-    onClick: ClickHandler
+    class?: string
+    label?: string
+    onClick?: ClickHandler | (() => void)
 }
 
 const Button: Component<ButtonProps> = (props) => {
@@ -14,7 +13,11 @@ const Button: Component<ButtonProps> = (props) => {
         props.onClick(event)
     }
 
-    return <button onClick={clickHandler}>{props.label}</button>
+    return (
+        <button class={props.class} onClick={clickHandler}>
+            {props.label}
+        </button>
+    )
 }
 
 export default Button

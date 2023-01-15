@@ -1,9 +1,9 @@
 import { Component, createSignal } from 'solid-js'
 
-import Button from '@atoms/button/component'
-import Input, { InputHandler, KeyPressHandler } from '@atoms/input'
+import Button from '@atoms/Button'
+import Input, { InputHandler, KeyPressHandler } from '@atoms/Input'
 
-const Login: Component = () => {
+const LoginForm: Component = () => {
     const [loginForm, setLoginForm] = createSignal({
         username: '',
         password: '',
@@ -56,4 +56,4 @@ const Login: Component = () => {
     )
 }
 
-export default Login
+export default LoginForm

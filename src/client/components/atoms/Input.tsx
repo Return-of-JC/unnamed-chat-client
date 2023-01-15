@@ -4,10 +4,11 @@ export type KeyPressHandler = JSX.EventHandler<HTMLInputElement, KeyboardEvent>
 export type InputHandler = JSX.EventHandler<HTMLInputElement, InputEvent>
 
 export interface InputProps {
-    onKeyPress: KeyPressHandler
-    onInput: InputHandler
-    value: string
-    label: string
+    value?: string
+    placeholder?: string
+    class?: string
+    onKeyPress?: KeyPressHandler
+    onInput?: InputHandler
 }
 
 const Input: Component<InputProps> = (props) => {
@@ -21,10 +22,11 @@ const Input: Component<InputProps> = (props) => {
 
     return (
         <input
+            class={props.class}
+            value={props.value}
+            placeholder={props.placeholder}
             onKeyPress={keyPressHandler}
             onInput={inputHandler}
-            value={props.value}
-            placeholder={props.label}
         />
     )
 }

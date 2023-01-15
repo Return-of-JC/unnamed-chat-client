@@ -12,20 +12,17 @@ WORKDIR ${DIR}
 COPY . .
 RUN chown -R ${USER}:${USER} ${DIR}
 
-RUN apk add npm make
+RUN apk add npm neovim
 RUN npm i -g pnpm
+
+USER ${USER}
 RUN pnpm install
+VOLUME ${DIR}/node_modules ${DIR}/.pnpm-store
 
 FROM base as dev-client
-RUN apk add neovim
-USER ${USER}
-
 CMD pnpm dev-client
 
 FROM base as dev-server
-RUN apk add neovim
-USER ${USER}
-
 CMD pnpm dev-server
 
 FROM base as builder

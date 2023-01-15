@@ -1,14 +1,14 @@
 import { render } from 'solid-js/web'
 import { Router, Routes, Route } from '@solidjs/router'
-import Login from '@molecules/login'
+import ChatPage from '@pages/ChatPage'
 
-import './index.scss'
+import '@styles/index.scss'
 
 function Root() {
     return (
         <Router>
             <Routes>
-                <Route path="/" component={Login} />
+                <Route path="/" component={ChatPage} />
             </Routes>
         </Router>
     )

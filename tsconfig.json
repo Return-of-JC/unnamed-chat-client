@@ -17,6 +17,7 @@
             "@molecules/*": ["client/components/molecules/*"],
             "@organisms/*": ["client/components/organisms/*"],
             "@templates/*": ["client/templates/*"],
+            "@styles/*": ["client/styles/*"],
             "@pages/*": ["client/pages/*"],
         },
     }
