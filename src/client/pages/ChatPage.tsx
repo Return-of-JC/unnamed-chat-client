@@ -1,4 +1,4 @@
-import { Component, Show, createResource, createSignal } from 'solid-js'
+import { Component, Show, createSignal, onMount } from 'solid-js'
 import { createStore } from 'solid-js/store'
 
 import '@styles/pages/ChatPage.scss'
@@ -7,11 +7,16 @@ import ChatBar from '@molecules/ChatBar'
 import ChatHistory from '@molecules/ChatHistory'
 import ChatList from '@molecules/ChatList'
 
-export interface Message {
-    uid: number
+export interface User {
+    id: number
     name: string
+    image: string
+}
+
+export interface Message {
+    user: User
     date: Date
-    text: string
+    value: string
 }
 
 export interface Room {
@@ -20,7 +25,7 @@ export interface Room {
     messages: Message[]
 }
 
-const [dummyData, setDummyData] = createStore<Room[]>([
+const dummyData: Room[] = [
     {
         id: 1,
         name: 'room1',
@@ -31,38 +36,50 @@ const [dummyData, setDummyData] = createStore<Room[]>([
         name: 'room2',
         messages: [],
     },
-])
+    {
+        id: 3,
+        name: 'room3',
+        messages: [],
+    },
+]
 
 const ChatPage: Component = () => {
-    const [selectedRoom, setSelectedRoom] = createSignal<number>(0)
-
-    const [rooms] = createResource<Room[]>(() => dummyData)
-
-    function sendMessage(message: Message) {
-        setDummyData((rooms) => {
-            rooms[0].messages.push(message)
-            return rooms
-        })
-        console.log(rooms())
-    }
+    const [rooms, setRooms] = createStore<Room[]>([])
+    const [selectedRoom, setSelectedRoom] = createSignal<Room>()
+    const [selectedUser, setSelectedUser] = createSignal<User>()
 
     function changeRoom(roomId: number) {
-        setSelectedRoom(roomId)
+        setSelectedRoom(rooms.find((room) => room.id === roomId))
     }
 
-    function getHistory() {
-        return rooms()[selectedRoom()].messages
+    function sendMessage(message: Message) {
+        setRooms(
+            (room) => room.id === selectedRoom().id,
+            'messages',
+            (messages) => messages.concat(message)
+        )
     }
+
+    onMount(() => {
+        setRooms(dummyData)
+        setSelectedRoom(rooms[0])
+        setSelectedUser({
+            id: 1,
+            name: 'jesse',
+            image: 'https://images3.memedroid.com/images/UPLOADED405/5d425bfb1cc2a.jpeg',
+        })
+    })
 
     return (
         <div class="chat-page">
-            <Show when={!rooms.loading} fallback={<>Loading...</>}>
+            <Show when={rooms.length >= 1} fallback={<>Loading...</>}>
                 <div class="chat-page__left">
-                    <ChatList rooms={rooms()} onRoomChange={changeRoom} />
+                    <ChatList rooms={rooms} onRoomChange={changeRoom} />
                 </div>
                 <div class="chat-page__right">
-                    <ChatHistory history={getHistory()} />
-                    <ChatBar onSubmit={sendMessage} />
+                    <h1>{selectedRoom().name}</h1>
+                    <ChatHistory messages={selectedRoom().messages} />
+                    <ChatBar onSubmit={sendMessage} user={selectedUser()} />
                 </div>
             </Show>
         </div>

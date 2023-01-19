@@ -3,10 +3,11 @@ import '@styles/components/molecules/ChatBar.scss'
 
 import Input, { InputHandler, KeyPressHandler } from '@atoms/Input'
 
-import { Message } from '@pages/ChatPage'
+import { Message, User } from '@pages/ChatPage'
 
 export interface ChatBarProps {
     onSubmit: (message: Message) => void
+    user: User
 }
 
 const ChatBar: Component<ChatBarProps> = (props) => {
@@ -27,10 +28,9 @@ const ChatBar: Component<ChatBarProps> = (props) => {
 
     const submit = () => {
         props.onSubmit({
-            uid: 1,
-            name: 'jesse',
+            user: props.user,
             date: new Date(),
-            text: message(),
+            value: message(),
         })
         setMessage('')
     }

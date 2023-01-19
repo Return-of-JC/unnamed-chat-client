@@ -20,7 +20,6 @@ const ChatList: Component<ChatListProps> = (props) => {
                             label={room.name}
                             onClick={() => props.onRoomChange(room.id)}
                         />
-                        {JSON.stringify(room)}
                     </li>
                 )}
             </For>
