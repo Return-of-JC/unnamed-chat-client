@@ -33,23 +33,21 @@ dependencies that **MUST** be installed to run the project:
 - [docker](https://www.docker.com/)
 - [docker-compose](https://docs.docker.com/compose/install/)
 - [just](https://github.com/casey/just)
+- [pnpm](https://pnpm.io/)
 
 additional dependencies for windows:
 - [WSL](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-containers)
-- [PNPM](https://pnpm.io/)
 
 to initalize the project for the first time:
 ```bash
-just linux
-just serve
+just
 ```
 
 ### Using the Just Runner
 
 if you need to rebuild the project:
 ```bash
-just linux (Linux + MacOS)
-just windows (Windows Only)
+just build
 ```
 
 if you need to serve the project:
@@ -65,6 +63,11 @@ just debug <container-name>
 if you need to reset the project
 ```bash
 just reset
+```
+
+if you need to prune docker builds
+```bash
+just prune
 ```
 
 updating the project:
