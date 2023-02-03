@@ -1,11 +1,24 @@
 set positional-arguments
 
-all: reset build serve
+all: reset init build serve
+
+# initializes environment variables and dependencies
+init:
+    @rm -rf .env
+    @echo "UID=$(id -u)"   >> .env
+    @echo "GID=$(id -g)"   >> .env
+    @echo "USER=$(whoami)" >> .env
+    @read -s -p "Enter Password: " PASS1 && echo && \
+     read -s -p "Confirm Password: " PASS2 && echo && \
+     if [[ "$PASS1" == "$PASS2" ]]; then \
+         echo "PASSWORD=\"$PASS1\"" >> .env; \
+     else \
+         echo "incorrect! try again"; exit 1; fi
+    pnpm install
 
 # builds for development
 build:
     docker-compose build
-    pnpm install
 
 # serves for development
 serve:
@@ -29,8 +42,14 @@ update:
 	pnpm update --latest
 	docker-compose build --no-cache --pull
 
+# allows you to run eslint in the docker container
 @eslint *args='':
-    ./node_modules/.bin/eslint $@
+    docker-compose exec client ./node_modules/.bin/eslint $@
 
+# allows you to run prettier in the docker container
 @prettier *args='':
-    ./node_modules/.bin/prettier $@
+    docker-compose exec client ./node_modules/.bin/prettier $@
+
+# allows you to run eslint in the docker container
+@pnpm *args='':
+    docker-compose exec client pnpm $@
