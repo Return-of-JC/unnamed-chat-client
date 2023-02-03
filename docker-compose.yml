@@ -1,10 +1,18 @@
 version: '3.3'
 
 services:
+  database:
+    build: docker/database
+    container_name: database
+    environment:
+      MARIADB_USER: user
+      MARIADB_PASSWORD: password
+      MARIADB_ROOT_PASSWORD: password
+
   server:
     build:
       context: .
-      target: dev-server
+      dockerfile: docker/server/Dockerfile
     container_name: server 
     ports:
       - 3030:3030
@@ -14,7 +22,7 @@ services:
   client:
     build:
       context: .
-      target: dev-client
+      dockerfile: docker/client/Dockerfile
     depends_on: [ server ]
     container_name: client
     ports:

@@ -8,7 +8,8 @@
     "author": "",
     "scripts": {
         "dev-client": "vite",
-        "dev-server": "nodemon src/server/index.ts"
+        "dev-server": "nodemon src/server/index.ts",
+        "build-client": "vite build"
     },
     "prettier": {
         "endOfLine": "auto",
