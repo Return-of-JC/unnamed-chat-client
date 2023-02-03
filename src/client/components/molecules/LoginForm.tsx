@@ -43,13 +43,13 @@ const LoginForm: Component = () => {
                 onKeyPress={keyPressHandler}
                 value={loginForm().username}
                 onInput={inputHandler}
-                label={'Username'}
+                placeholder={'Username'}
             />
             <Input
                 onKeyPress={keyPressHandler}
                 value={loginForm().password}
                 onInput={inputHandler}
-                label={'Password'}
+                placeholder={'Password'}
             />
             <Button onClick={submitLogin} label={'Log in'} />
         </div>

@@ -21,12 +21,14 @@ specifiers:
   vite-plugin-eslint: ^1.8.1
   vite-plugin-solid: ^2.5.0
   vite-tsconfig-paths: ^4.0.3
+  ws: ^8.12.0
 
 dependencies:
   '@solidjs/router': 0.6.0_solid-js@1.6.8
   express: 4.18.2
   sass: 1.57.1
   solid-js: 1.6.8
+  ws: 8.12.0
 
 devDependencies:
   '@types/express': 4.17.15
@@ -3025,6 +3027,19 @@ packages:
   /wrappy/1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
     dev: true
+
+  /ws/8.12.0:
+    resolution: {integrity: sha512-kU62emKIdKVeEIOIKVegvqpXMSTAMLJozpHZaJNDYqBjzlSYXQGviYwN1osDLJ9av68qHd4a2oSjd7yD4pacig==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: false
 
   /yallist/3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
