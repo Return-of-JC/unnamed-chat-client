@@ -17,7 +17,7 @@ services:
     ports:
       - 3030:3030
     volumes:
-      - ./src:/chat-client/src
+      - ./src:/home/user/server/src
 
   client:
     build:
@@ -29,5 +29,5 @@ services:
       - 3000:3000
       - 3010:3010
     volumes:
-      - ./src:/chat-client/src
+      - ./src:/home/user/client/src
   
