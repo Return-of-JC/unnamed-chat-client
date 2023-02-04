@@ -6,6 +6,7 @@ a simple chat app build with SolidJS and NodeJS
 - [Before Starting](#before-starting)
 - [Installation and Setup](#installation-and-setup)
     - [Using the Just Runner](#using-the-just-runner)
+- [Sucssess!](#sucssess)
 
 ## Before Starting
 
@@ -13,7 +14,7 @@ please be familiar with these code patterns:
 - [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/)
 - [BEM](https://getbem.com/)
 
-it's also usefull to read up on these:
+it's also useful to read up on these:
 - [SolidJS](https://www.solidjs.com/)
 - [NodeJS](https://nodejs.org/en/)
 - [Express](https://expressjs.com/)
@@ -22,7 +23,7 @@ it's also usefull to read up on these:
 
 you'll also need to setup [Eslint](https://eslint.org/docs/latest/user-guide/integrations) 
 and [Prettier](https://prettier.io/docs/en/editors.html) in your editor of choice for
-consistant code quality.
+consistent code quality.
 
 ## Installation and Setup
 
@@ -30,20 +31,21 @@ You'll need to create a docker account and use [docker login](https://docs.docke
 to pull in images to your local machine.
 
 dependencies that **MUST** be installed to run the project:
+- [just](https://github.com/casey/just#installation)
+- [pnpm](https://pnpm.io/installation)
 - [docker](https://www.docker.com/)
 - [docker-compose](https://docs.docker.com/compose/install/)
-- [just](https://github.com/casey/just)
-- [pnpm](https://pnpm.io/)
 
 additional dependencies for windows:
 - [WSL](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-containers)
 
-to initalize the project for the first time:
-```bash
-just
-```
 
 ### Using the Just Runner
+
+to initialize the project for the first time:
+```bash
+just all
+```
 
 if you need to rebuild the project:
 ```bash
@@ -54,23 +56,15 @@ if you need to serve the project:
 ```bash
 just serve
 ```
-
-to debug a running container:
+to list all available commands and what they do:
 ```bash
-just debug <container-name>
+just
 ```
 
-if you need to reset the project
-```bash
-just reset
-```
+## Sucssess!
 
-if you need to prune docker builds
-```bash
-just prune
-```
+you should now be able to view the web app at [localhost:3000](http://localhost:3000)
+you'll also have the ability to access adminer sql client at [localhost:3001](http://localhost:3001)
 
-updating the project:
-```bash
-just update
-```
+all development for the app can be done through the ***/src/*** directory
+

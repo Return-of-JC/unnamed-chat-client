@@ -1,5 +1,8 @@
 set positional-arguments
 
+default: 
+    @just --list
+
 all: reset init build serve
 
 # initializes environment variables and dependencies
