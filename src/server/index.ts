@@ -1,18 +1,15 @@
+import 'dotenv/config'
 import express from 'express'
 
+import websocket from './utilities/websocket'
+import { InitalizeDatabase } from './utilities/mysql'
+
 const app = express()
-const port = 3030
-
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-require('dotenv').config()
-
-export const server = app.listen(port, () => {
+const port = process.env.SERVER_PORT || 3030
+const server = app.listen(port, () => {
     console.log(`listening on port ${port}`)
 })
 
-require(__dirname + '/database.ts')
-require(__dirname + '/websockets.ts')
+InitalizeDatabase()
 
-app.get('/', (req, res) => {
-    res.send('hello world')
-})
+websocket(server)

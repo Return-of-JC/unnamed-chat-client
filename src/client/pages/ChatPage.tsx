@@ -44,10 +44,11 @@ const dummyData: Room[] = [
 ]
 
 const ChatPage: Component = () => {
+    const websocket = new WebSocket('ws://localhost:3030')
+
     const [rooms, setRooms] = createStore<Room[]>([])
     const [selectedRoom, setSelectedRoom] = createSignal<Room>()
     const [selectedUser, setSelectedUser] = createSignal<User>()
-    const ws = new WebSocket('ws://localhost:3030/chat')
 
     function changeRoom(roomId: number) {
         setSelectedRoom(rooms.find((room) => room.id === roomId))
@@ -59,6 +60,7 @@ const ChatPage: Component = () => {
             'messages',
             (messages) => messages.concat(message)
         )
+        websocket.send(message.value)
     }
 
     onMount(() => {
@@ -73,7 +75,6 @@ const ChatPage: Component = () => {
 
     return (
         <div class="chat-page">
-            <button onClick={() => ws.send('testing')}>test</button>
             <Show when={rooms.length >= 1} fallback={<>Loading...</>}>
                 <div class="chat-page__left">
                     <ChatList rooms={rooms} onRoomChange={changeRoom} />
