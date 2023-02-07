@@ -14,6 +14,5 @@ RUN chown -R ${USER}:${USER} /build
 
 USER ${USER}
 RUN pnpm install
-VOLUME /build/node_modules
 
 CMD [ "pnpm", "dev-server" ]

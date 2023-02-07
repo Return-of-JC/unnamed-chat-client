@@ -42,7 +42,6 @@ services:
       - 3030:3030
     volumes:
       - ./src:/build/src
-      - node_modules:/build/node_modules
 
   client:
     build:
@@ -59,7 +58,6 @@ services:
       - 3010:3010
     volumes:
       - ./src:/build/src
-      - node_modules:/build/node_modules
 
 
   
