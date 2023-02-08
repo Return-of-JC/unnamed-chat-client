@@ -1,18 +1,13 @@
-FROM alpine:latest as develop
+FROM node:18-alpine as develop
 
-ARG USER=chatter
-ARG UID=1000
-ARG GID=1000
-
-RUN apk add --no-cache npm neovim && npm i -g pnpm && \
-    addgroup -g ${GID} ${USER} && \
-    adduser -D -G ${USER} -u ${UID} ${USER}
+RUN apk add --no-cache curl neovim && \
+    /bin/sh -o pipefail -c "curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm"
 
 WORKDIR /build
 COPY . .
-RUN chown -R ${USER}:${USER} /build
+RUN chown -R node:node /build
 
-USER ${USER}
-RUN pnpm install
+USER node
+RUN pnpm fetch && pnpm install -f --offline
 
 CMD [ "pnpm", "dev-server" ]

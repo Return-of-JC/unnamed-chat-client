@@ -33,10 +33,6 @@ services:
     build:
       context: .
       dockerfile: docker/server/Dockerfile
-      args:
-        UID: ${UID}
-        GID: ${GID}
-        USER: ${USER}
     container_name: server 
     ports:
       - 3030:3030
@@ -47,10 +43,6 @@ services:
     build:
       context: .
       dockerfile: docker/client/Dockerfile
-      args:
-        UID: ${UID}
-        GID: ${GID}
-        USER: ${USER}
     depends_on: [ server ]
     container_name: client
     ports:

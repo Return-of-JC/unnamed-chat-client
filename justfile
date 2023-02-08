@@ -52,7 +52,3 @@ update:
 # allows you to run prettier in the docker container
 @prettier *args='':
     docker-compose exec client ./node_modules/.bin/prettier $@
-
-# allows you to run eslint in the docker container
-@pnpm *args='':
-    docker-compose exec client pnpm $@
