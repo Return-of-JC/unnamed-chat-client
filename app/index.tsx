@@ -1,11 +1,11 @@
-import { render, Show } from 'solid-js/web'
+import { Show } from 'solid-js'
+import { render } from 'solid-js/web'
 import { Router, Routes, Route, Navigate } from '@solidjs/router'
 
 import ChatPage from '@pages/ChatPage'
 import LoginPage from '@pages/LoginPage'
 
 import '@styles/index.scss'
-
 
 function Root() {
     function isAuthorized() {
@@ -15,7 +15,10 @@ function Root() {
     return (
         <Router>
             <Routes>
-                <Show when={isAuthorized()} fallback={<Navigate href="/login" />}>
+                <Show
+                    when={isAuthorized()}
+                    fallback={<Navigate href="/login" />}
+                >
                     <Route path="/" component={ChatPage} />
                 </Show>
                 <Route path="/login" component={LoginPage} />
