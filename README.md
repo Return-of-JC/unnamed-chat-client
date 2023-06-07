@@ -39,6 +39,9 @@ dependencies that **MUST** be installed to run the project:
 additional dependencies for windows:
 - [WSL](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-containers)
 
+another note: sometimes the mysql database needs time to setup due to it not having health checks. 'just serve' a few times 
+and you should see the server up and running normaly.
+
 
 ### Using the Just Runner
 
@@ -65,6 +68,4 @@ just
 
 you should now be able to view the web app at [localhost:3000](http://localhost:3000)
 you'll also have the ability to access adminer sql client at [localhost:3001](http://localhost:3001)
-
-all development for the app can be done through the ***/src/*** directory
 

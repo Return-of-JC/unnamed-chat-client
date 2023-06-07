@@ -3,6 +3,8 @@ import { Component, createSignal } from 'solid-js'
 import Button from '@atoms/Button'
 import Input, { InputHandler, KeyPressHandler } from '@atoms/Input'
 
+import '@styles/components/molecules/LoginForm.scss'
+
 const LoginForm: Component = () => {
     const [loginForm, setLoginForm] = createSignal({
         username: '',
@@ -38,7 +40,7 @@ const LoginForm: Component = () => {
     }
 
     return (
-        <div>
+        <div class="login-form">
             <Input
                 onKeyPress={keyPressHandler}
                 value={loginForm().username}

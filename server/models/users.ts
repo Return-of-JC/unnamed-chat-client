@@ -7,7 +7,6 @@ import {
 } from '../utilities/mysql'
 
 export interface User {
-    [key: string]: string
     user_id: string
     user_name: string
     user_password: string
@@ -15,11 +14,11 @@ export interface User {
 }
 
 export async function CreateUsersTable() {
-    return CreateTable<User>('users', {
-        user_id: 'varchar(255)',
-        user_name: 'varchar(255)',
-        user_password: 'varchar(255)',
-        user_image: 'varchar(255)',
+    return CreateTable('users', {
+        id: 'varchar(255)',
+        name: 'varchar(255)',
+        password: 'varchar(255)',
+        image: 'varchar(255)',
     })
 }
 
@@ -28,7 +27,7 @@ export async function CreateUser(
     user_password: string,
     user_image?: string
 ) {
-    return InsertRow<User>('users', {
+    return InsertRow('users', {
         user_id: uuidv4(),
         user_name,
         user_password,

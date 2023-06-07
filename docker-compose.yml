@@ -9,6 +9,7 @@ services:
     build:
       context: docker/mariadb
     container_name: mariadb 
+    restart: always
     environment:
       MARIADB_USER: ${USER}
       MARIADB_PASSWORD: ${PASSWORD}
@@ -22,6 +23,8 @@ services:
     build:
       context: docker/adminer
     container_name: adminer 
+    depends_on:
+      - mariadb
     restart: always
     environment:
       ADMINER_DESIGN: pepa-linha-dark
@@ -34,22 +37,28 @@ services:
       context: .
       dockerfile: docker/server/Dockerfile
     container_name: server 
+    restart: always
+    depends_on:
+      - mariadb
     ports:
       - 3030:3030
     volumes:
-      - ./src:/build/src
+      - ./server:/build/server
 
   client:
     build:
       context: .
       dockerfile: docker/client/Dockerfile
-    depends_on: [ server ]
     container_name: client
+    restart: always
+    depends_on:
+      - mariadb
+      - server
     ports:
       - 3000:3000
       - 3010:3010
     volumes:
-      - ./src:/build/src
+      - ./app:/build/app
 
 
   

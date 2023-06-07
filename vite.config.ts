@@ -5,7 +5,7 @@ import eslint from 'vite-plugin-eslint'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
-    root: './src/client',
+    root: './app',
     plugins: [solidPlugin(), eslint(), tsconfigPaths()],
     server: {
         port: 3000,

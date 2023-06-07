@@ -25,7 +25,14 @@ export interface Room {
     messages: Message[]
 }
 
-const dummyData: Room[] = [
+
+const dummyUser: User = {
+    id: 1,
+    name: 'jesse',
+    image: 'https://images3.memedroid.com/images/UPLOADED405/5d425bfb1cc2a.jpeg',
+}
+
+const dummyRooms: Room[] = [
     {
         id: 1,
         name: 'room1',
@@ -63,14 +70,11 @@ const ChatPage: Component = () => {
         websocket.send(message.value)
     }
 
+
     onMount(() => {
-        setRooms(dummyData)
+        setRooms(dummyRooms)
         setSelectedRoom(rooms[0])
-        setSelectedUser({
-            id: 1,
-            name: 'jesse',
-            image: 'https://images3.memedroid.com/images/UPLOADED405/5d425bfb1cc2a.jpeg',
-        })
+        setSelectedUser(dummyUser)
     })
 
     return (
