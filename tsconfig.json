@@ -13,14 +13,15 @@
         ],
         "noEmit": true,
         "isolatedModules": true,
+        "baseUrl": "./",
         "paths": {
-            "@": ["./app/*"],
-            "@atoms/*": ["./app/components/atoms/*"],
-            "@molecules/*": ["./app/components/molecules/*"],
-            "@organisms/*": ["./app/components/organisms/*"],
-            "@templates/*": ["./app/templates/*"],
-            "@styles/*": ["./app/styles/*"],
-            "@pages/*": ["./app/pages/*"],
+            "@/*": ["app/*"],
+            "@atoms/*": ["app/components/atoms/*"],
+            "@molecules/*": ["app/components/molecules/*"],
+            "@organisms/*": ["app/components/organisms/*"],
+            "@templates/*": ["app/templates/*"],
+            "@styles/*": ["app/styles/*"],
+            "@pages/*": ["app/pages/*"],
         },
     }
 }
