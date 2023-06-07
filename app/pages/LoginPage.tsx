@@ -7,7 +7,7 @@ import '@styles/pages/LoginPage.scss'
 const LoginPage: Component = () => {
     return (
         <div class="login-page">
-            <LoginForm></LoginForm>
+            <LoginForm />
         </div>
     )
 }

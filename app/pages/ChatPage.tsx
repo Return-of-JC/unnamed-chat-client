@@ -25,7 +25,6 @@ export interface Room {
     messages: Message[]
 }
 
-
 const dummyUser: User = {
     id: 1,
     name: 'jesse',
@@ -69,7 +68,6 @@ const ChatPage: Component = () => {
         )
         websocket.send(message.value)
     }
-
 
     onMount(() => {
         setRooms(dummyRooms)
