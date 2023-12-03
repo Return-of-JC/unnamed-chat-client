@@ -50,7 +50,7 @@ const dummyRooms: Room[] = [
 ]
 
 const ChatPage: Component = () => {
-    const websocket = new WebSocket('ws://localhost:3030')
+    const websocket = new WebSocket('ws://localhost:3030/messages')
 
     const [rooms, setRooms] = createStore<Room[]>([])
     const [selectedRoom, setSelectedRoom] = createSignal<Room>()

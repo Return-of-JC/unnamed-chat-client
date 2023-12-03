@@ -3,10 +3,10 @@ import { Component, createSignal } from 'solid-js'
 import Button from '@atoms/Button'
 import Input, { InputHandler, KeyPressHandler } from '@atoms/Input'
 
-import '@styles/components/molecules/LoginForm.scss'
+import '@styles/components/molecules/CreateAccountForm.scss'
 
-const LoginForm: Component = () => {
-    const [loginForm, setLoginForm] = createSignal({
+const CreateAccountForm: Component = () => {
+    const [createAccountForm, setCreateAccountForm] = createSignal({
         username: '',
         password: '',
     })
@@ -16,10 +16,16 @@ const LoginForm: Component = () => {
 
         switch (target.placeholder) {
             case 'Username':
-                setLoginForm((prev) => ({ ...prev, username: target.value }))
+                setCreateAccountForm((prev) => ({
+                    ...prev,
+                    username: target.value,
+                }))
                 break
             case 'Password':
-                setLoginForm((prev) => ({ ...prev, password: target.value }))
+                setCreateAccountForm((prev) => ({
+                    ...prev,
+                    password: target.value,
+                }))
                 break
         }
     }
@@ -29,29 +35,29 @@ const LoginForm: Component = () => {
     }
 
     const submitLogin = () => {
-        const inputs = Object.entries(loginForm())
+        const inputs = Object.entries(createAccountForm())
 
         for (let inputIndex = 0; inputIndex < inputs.length; inputIndex++) {
             const value = inputs[inputIndex][1]
             if ([undefined, null].includes(value) || value.length < 1) return
         }
 
-        setLoginForm(() => ({ username: '', password: '' }))
+        setCreateAccountForm(() => ({ username: '', password: '' }))
 
         console.log('submitted!')
     }
 
     return (
-        <div class="login-form">
+        <div class="create-account-form">
             <Input
                 onKeyPress={keyPressHandler}
-                value={loginForm().username}
+                value={createAccountForm().username}
                 onInput={inputHandler}
                 placeholder={'Username'}
             />
             <Input
                 onKeyPress={keyPressHandler}
-                value={loginForm().password}
+                value={createAccountForm().password}
                 onInput={inputHandler}
                 placeholder={'Password'}
             />
@@ -60,4 +66,4 @@ const LoginForm: Component = () => {
     )
 }
 
-export default LoginForm
+export default CreateAccountForm

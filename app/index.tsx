@@ -9,7 +9,7 @@ import '@styles/index.scss'
 
 function Root() {
     function isAuthorized() {
-        return false
+        return true
     }
 
     return (
